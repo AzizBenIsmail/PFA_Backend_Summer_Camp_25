@@ -3,11 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const http = require("http") //1 import web "http"
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+var app = express(); //Bdina
 
 
 app.use(logger('dev'));
@@ -32,5 +33,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json('error');
 });
+
+const server = http.createServer(app)
+server.listen(5000,()=>{console.log("app is running on port 5000")})
