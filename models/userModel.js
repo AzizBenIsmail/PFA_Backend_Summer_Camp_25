@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
   {
+
+    //user
     name: String,
     email: {
       type: String,
@@ -15,9 +17,23 @@ const userSchema = new mongoose.Schema(
       require: true,
     },
     role: { type: String, enum: ["client", "admin", "moderateur"] },
+
     age: Number,
     etat: Boolean,
     image_User: { type: String, default: "client.png" },
+//admin
+
+//forni
+
+//moderateur
+
+//
+
+    //Rleation
+ //   Notification: [{type: mongoose.Schema.Types.ObjectId, ref:"Notif" }], // Many 
+    cars: [{type: mongoose.Schema.Types.ObjectId, ref:"Car" }] // Many 
+    //car: {type: mongoose.Schema.Types.ObjectId, ref:"Car" } // one 
+    
   },
   { timestamps: true }
 );

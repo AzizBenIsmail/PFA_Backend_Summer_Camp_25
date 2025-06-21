@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 module.exports.getAllUsers = async (req,res)=>{
     try {
-        const userList = await userModel.find({age:{$lt:20}}).sort({createdAt:-1}).limit(3)
+        const userList = await userModel.find({age:{$lt:22}}).sort({createdAt:-1}).limit(3).populate("cars")
         //const userList = await userModel.find().sort("age")
 
         if(userList.length == 0){
@@ -152,7 +152,6 @@ module.exports.updatePassword = async (req,res)=>{
 module.exports.addClientWithImg = async (req,res)=>{
     try {
         const UserData = { ...req.body ,}
-
 
         UserData.role = "client"
 
